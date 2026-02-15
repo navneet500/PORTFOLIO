@@ -1,0 +1,298 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ===== COLOR TOKENS ===== */
+
+  /* Dark theme (default) */
+  :root {
+    --surface: #0a0b0d;
+    --surface-elevated: #111318;
+    --surface-muted: #16181d;
+    --border: #23262f;
+    --border-subtle: #2a2d37;
+    --text-primary: #f4f4f5;
+    --text-secondary: #d4d4d8;
+    --text-muted: #a1a1aa;
+    --accent: #60a5fa;
+    --accent-muted: #3b82f6;
+    --grain-opacity: 0.025;
+    --grid-color: rgba(37, 40, 48, 0.08);
+  }
+
+  /* Light theme */
+  .light {
+    --surface: #ffffff;
+    --surface-elevated: #f8fafc;
+    --surface-muted: #f1f5f9;
+    --border: #e2e8f0;
+    --border-subtle: #cbd5e1;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --accent: #2563eb;
+    --accent-muted: #1d4ed8;
+    --grain-opacity: 0.015;
+    --grid-color: rgba(0, 0, 0, 0.04);
+  }
+
+  /* ===== BASE TYPOGRAPHY ===== */
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface antialiased;
+    color: var(--text-primary);
+    font-feature-settings: 'ss01' 1, 'ss02' 1;
+  }
+
+  /* ===== SCROLL REVEAL ===== */
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(var(--reveal-y, 24px));
+    transition:
+      opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s),
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s);
+    will-change: opacity, transform;
+  }
+  .scroll-reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== EFFECTS ===== */
+
+  .grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: var(--grain-opacity);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(var(--grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  /* 3D-style perspective grid floor */
+  .bg-3d-grid {
+    position: absolute;
+    left: 50%;
+    bottom: -6rem;
+    width: 180%;
+    height: 520px;
+    transform-origin: 50% 100%;
+    opacity: 0.24;
+    background-image:
+      linear-gradient(var(--grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 64px 64px;
+    will-change: transform;
+    filter: blur(0.5px);
+    animation: gridDrift 40s linear infinite;
+  }
+
+  @keyframes gridDrift {
+    from {
+      transform: perspective(1400px) rotateX(72deg) rotateZ(-2deg) translate3d(-52%, 0%, 0);
+    }
+    to {
+      transform: perspective(1400px) rotateX(72deg) rotateZ(2deg) translate3d(-48%, 6%, 0);
+    }
+  }
+
+  /* Slow, continuous animated gradient backdrop */
+  .bg-gradient-animated {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, var(--accent), transparent 65%),
+      radial-gradient(ellipse 60% 40% at 10% 120%, rgba(56, 189, 248, 0.65), transparent 60%);
+    background-size: 140% 140%, 130% 130%;
+    background-repeat: no-repeat;
+    animation: gradientPan 60s ease-in-out infinite alternate;
+  }
+
+  @keyframes gradientPan {
+    0% {
+      background-position: 50% 0%, 0% 102%;
+    }
+    50% {
+      background-position: 52% 3%, 4% 98%;
+    }
+    100% {
+      background-position: 48% 5%, -2% 104%;
+    }
+  }
+
+  /* Subtle animated background orbs */
+  .bg-orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(44px);
+    opacity: 0.32;
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+
+  .bg-orb-1 {
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle at 30% 30%, var(--accent-muted), transparent 65%);
+    animation: orbFloat1 20s ease-in-out infinite alternate;
+  }
+
+  .bg-orb-2 {
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle at 80% 20%, #22c55e, transparent 70%);
+    animation: orbFloat2 26s ease-in-out infinite alternate;
+  }
+
+  @keyframes orbFloat1 {
+    from {
+      transform: translate3d(-12%, -10%, 0) scale(1);
+    }
+    to {
+      transform: translate3d(8%, 12%, 0) scale(1.06);
+    }
+  }
+
+  @keyframes orbFloat2 {
+    from {
+      transform: translate3d(10%, 0%, 0) scale(1);
+    }
+    to {
+      transform: translate3d(-10%, 16%, 0) scale(1.08);
+    }
+  }
+
+  /* ===== HERO ENTRANCE ANIMATION ===== */
+
+  .hero-fade {
+    animation: heroFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes heroFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Letter-level stagger for name reveal */
+  .hero-letter {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: heroLetterIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes heroLetterIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Button hover micro-interactions */
+  .hero-btn-primary {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+  .hero-btn-primary:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  }
+  .hero-btn-secondary {
+    transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-fade,
+    .hero-letter {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+    .hero-btn-primary,
+    .hero-btn-secondary {
+      transition: none;
+    }
+    .scroll-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  /* Focus ring for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-surface;
+  }
+
+  /* Skill icon hover glow */
+  .skill-icon-box {
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .light .skill-icon-box:hover {
+    box-shadow: 0 0 12px rgba(37, 99, 235, 0.25);
+  }
+
+  /* Ensure react-icons display their brand colors */
+  .skill-icon-box svg {
+    /* Preserve original colors in SVG paths */
+    fill: currentColor;
+  }
+
+  /* Allow react-icons to use their embedded brand colors */
+  .skill-icon-box > div[style*="color"] svg {
+    /* When a brand color is set, use it */
+    fill: currentColor !important;
+  }
+
+  /* Custom scrollbar for skill cards */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: var(--border-subtle);
+  }
+
+  .scrollbar-thumb-border::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
