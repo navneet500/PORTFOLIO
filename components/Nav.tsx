@@ -58,12 +58,12 @@ export function Nav() {
           <ul className="flex items-center gap-6">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link
+                <a
                   href={link.href}
                   className="text-small text-text-secondary hover:text-text-primary transition-colors"
                 >
                   {link.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
@@ -97,13 +97,13 @@ export function Nav() {
             <ul className="flex flex-col px-6 py-4 gap-4">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
+                  <a
                     href={link.href}
                     className="block text-body text-text-secondary hover:text-text-primary transition-colors"
                     onClick={() => setMobileOpen(false)}
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>

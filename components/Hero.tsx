@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, FileDown, ChevronDown } from 'lucide-react';
@@ -92,22 +91,22 @@ export function Hero() {
               />
               Resume
             </a>
-            <Link
+            <a
               href="#projects"
-              className="hero-btn-secondary group inline-flex items-center gap-2.5 rounded-lg border border-border px-6 py-3 text-small font-medium text-text-primary hover:border-accent hover:text-accent hover:scale-[1.02] active:scale-[0.98]"
+              className="hero-btn-secondary group inline-flex items-center gap-2.5 rounded-lg border border-border px-6 py-3 text-small font-medium text-text-primary hover:border-accent hover:text-accent hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
             >
               View My Work
               <ArrowRight
                 size={16}
                 className="transition-transform duration-200 group-hover:translate-x-0.5"
               />
-            </Link>
-            <Link
+            </a>
+            <a
               href="#contact"
-              className="hero-btn-secondary group inline-flex items-center gap-2.5 rounded-lg border border-border px-6 py-3 text-small font-medium text-text-primary hover:border-accent hover:text-accent hover:scale-[1.02] active:scale-[0.98]"
+              className="hero-btn-secondary group inline-flex items-center gap-2.5 rounded-lg border border-border px-6 py-3 text-small font-medium text-text-primary hover:border-accent hover:text-accent hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
             >
               Contact Me
-            </Link>
+            </a>
           </motion.div>
 
           <motion.div

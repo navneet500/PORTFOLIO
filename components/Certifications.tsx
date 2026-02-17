@@ -7,7 +7,6 @@ import { Award, Zap } from 'lucide-react';
 export function Certifications() {
   return (
     <section
-      id="certifications"
       className="py-20 lg:py-28 px-6 lg:px-12 xl:px-20 max-w-6xl mx-auto"
       aria-labelledby="certifications-heading"
     >

@@ -39,13 +39,13 @@ export function HomePageContent() {
       <SectionDivider />
       <Skills />
       <SectionDivider />
-      <LazySection Component={DynamicExperience} placeholder={<SectionPlaceholder />} staggerDelay={0} />
+      <LazySection Component={DynamicExperience} placeholder={<SectionPlaceholder />} staggerDelay={0} sectionId="experience" />
       <SectionDivider />
-      <LazySection Component={DynamicProjects} placeholder={<SectionPlaceholder />} staggerDelay={0.05} />
+      <LazySection Component={DynamicProjects} placeholder={<SectionPlaceholder />} staggerDelay={0.05} sectionId="projects" />
       <SectionDivider />
-      <LazySection Component={DynamicCertifications} placeholder={<SectionPlaceholder />} staggerDelay={0.1} />
+      <LazySection Component={DynamicCertifications} placeholder={<SectionPlaceholder />} staggerDelay={0.1} sectionId="certifications" />
       <SectionDivider />
-      <LazySection Component={DynamicContact} placeholder={<SectionPlaceholder />} staggerDelay={0.15} />
+      <LazySection Component={DynamicContact} placeholder={<SectionPlaceholder />} staggerDelay={0.15} sectionId="contact" />
     </PageEntryFade>
   );
 }

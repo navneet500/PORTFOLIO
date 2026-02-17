@@ -11,13 +11,15 @@ type LazySectionProps = {
   placeholder?: React.ReactNode;
   /** Subtle stagger delay (seconds) when multiple sections enter view. */
   staggerDelay?: number;
+  /** Optional id placed on the wrapper so anchor links work before the section loads. */
+  sectionId?: string;
 };
 
 /**
  * Renders a placeholder until the section enters the viewport (Intersection Observer).
  * Then loads the component with a fade + slide animation. Triggers once. No CLS.
  */
-export function LazySection({ Component, placeholder, staggerDelay = 0 }: LazySectionProps) {
+export function LazySection({ Component, placeholder, staggerDelay = 0, sectionId }: LazySectionProps) {
   const [inView, setInView] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -41,11 +43,11 @@ export function LazySection({ Component, placeholder, staggerDelay = 0 }: LazySe
   const Placeholder = placeholder ?? <SectionPlaceholder />;
 
   if (!inView) {
-    return <div ref={ref}>{Placeholder}</div>;
+    return <div ref={ref} id={sectionId}>{Placeholder}</div>;
   }
 
   return (
-    <div ref={ref}>
+    <div ref={ref} id={sectionId}>
       <Suspense fallback={Placeholder}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
