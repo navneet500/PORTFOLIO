@@ -5,13 +5,12 @@ import {
   SiPostgresql,
   SiGnubash,
   SiHtml5,
-  SiCss3,
+  SiCss,
   SiJavascript,
   SiReact,
   SiFlask,
   SiDjango,
   SiStreamlit,
-  SiAmazonwebservices,
   SiDbt,
   SiApacheairflow,
   SiDatabricks,
@@ -23,15 +22,19 @@ import {
   SiJenkins,
   SiDocker,
   SiGithub,
+  SiFastapi,
+  SiClaude,
+  SiDeepmind,
+  SiGithubcopilot,
 } from 'react-icons/si';
 import {
   FaDatabase,
   FaServer,
   FaChartBar,
-  FaFileContract,
-  FaDollarSign,
+  FaCloudUploadAlt,
+  FaTerminal,
+  FaShieldAlt,
 } from 'react-icons/fa';
-import { TbBrandAzure } from 'react-icons/tb';
 
 export type SkillItem = {
   name: string;
@@ -48,12 +51,11 @@ export const skillIconColors: Record<string, string> = {
   HTML: '#e34c26',
   CSS: '#1572b6',
   JavaScript: '#f7df1e',
-  AWS: '#FF9900',
-  Azure: '#0078D4',
   React: '#61dafb',
   Flask: '#000000',
   Django: '#092e20',
   Streamlit: '#ff4b4b',
+  FastAPI: '#009688',
   dbt: '#ff6949',
   Airflow: '#017cee',
   TWS: '#60a5fa',
@@ -68,9 +70,14 @@ export const skillIconColors: Record<string, string> = {
   Docker: '#2496ed',
   GitHub: '#4078c0',
   'Data Modeling': '#60a5fa',
-  'Data Contracts': '#60a5fa',
-  'Cost-Aware': '#60a5fa',
-  Reporting: '#60a5fa',
+  'Data Governance': '#60a5fa',
+  'Cloud Migration': '#60a5fa',
+  'Analytics & Reporting': '#60a5fa',
+  Cursor: '#FFFFFF',
+  Claude: '#D97757',
+  'GitLab Duo': '#fc6d26',
+  Antigravity: '#4285F4',
+  'AI Development': '#60a5fa',
 };
 
 export type SkillGroup = {
@@ -80,33 +87,38 @@ export type SkillGroup = {
 
 export const skillGroups: SkillGroup[] = [
   {
-    label: 'Languages',
+    label: 'Languages and Frameworks',
     items: [
       { name: 'Python', icon: SiPython },
       { name: 'C++', icon: SiCplusplus },
       { name: 'SQL', icon: SiPostgresql },
       { name: 'Shell Scripting', icon: SiGnubash },
       { name: 'HTML', icon: SiHtml5 },
-      { name: 'CSS', icon: SiCss3 },
+      { name: 'CSS', icon: SiCss },
       { name: 'JavaScript', icon: SiJavascript },
-    ],
-  },
-  {
-    label: 'Cloud & Frameworks',
-    items: [
-      { name: 'AWS', icon: SiAmazonwebservices },
-      { name: 'Azure', icon: TbBrandAzure },
       { name: 'React', icon: SiReact },
       { name: 'Flask', icon: SiFlask },
       { name: 'Django', icon: SiDjango },
       { name: 'Streamlit', icon: SiStreamlit },
+      { name: 'FastAPI', icon: SiFastapi },
+    ],
+  },
+  {
+    label: 'AI & Developer Productivity',
+    items: [
+      { name: 'Cursor', iconPath: '/ai-icons/cursor.svg' },
+      { name: 'Claude', icon: SiClaude },
+      { name: 'GitLab Duo', icon: SiGitlab },
+      { name: 'Antigravity', icon: SiDeepmind },
+      { name: 'Prompt Engineering', icon: FaTerminal },
+      { name: 'AI Development', icon: SiGithubcopilot },
     ],
   },
   {
     label: 'AWS Services',
     items: [
-      { name: 'SageMaker', iconPath: '/aws-icons/Amazon-SageMaker.svg' },
       { name: 'AWS Bedrock', iconPath: '/aws-icons/Amazon-Bedrock.svg' },
+      { name: 'SageMaker', iconPath: '/aws-icons/Amazon-SageMaker.svg' },
       { name: 'S3', iconPath: '/aws-icons/Amazon-S3.svg' },
       { name: 'EC2', iconPath: '/aws-icons/Amazon-EC2.svg' },
       { name: 'ECS', iconPath: '/aws-icons/Amazon-ECS.svg' },
@@ -148,10 +160,10 @@ export const skillGroups: SkillGroup[] = [
   {
     label: 'Domain',
     items: [
+      { name: 'Cloud Migration', icon: FaCloudUploadAlt },
       { name: 'Data Modeling', icon: FaDatabase },
-      { name: 'Data Contracts', icon: FaFileContract },
-      { name: 'Cost-Aware', icon: FaDollarSign },
-      { name: 'Reporting', icon: FaChartBar },
+      { name: 'Analytics & Reporting', icon: FaChartBar },
+      { name: 'Data Governance', icon: FaShieldAlt },
     ],
   },
 ];

@@ -81,8 +81,9 @@ export function Hero() {
             className="flex flex-wrap justify-center lg:justify-start items-center gap-4 mb-10"
           >
             <a
-              href="/CV_Navneet_Sharma.pdf"
-              download="CV_Navneet_Sharma.pdf"
+              href="/Navneet_Sharma_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hero-btn-primary group inline-flex items-center gap-2.5 rounded-lg bg-accent text-white px-6 py-3 text-small font-medium hover:bg-accent-muted hover:scale-[1.02] active:scale-[0.98]"
             >
               <FileDown

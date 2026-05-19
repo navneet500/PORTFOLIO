@@ -41,7 +41,8 @@ export function Contact() {
 
   return (
     <section
-      className="py-20 lg:py-28 px-6 lg:px-12 xl:px-20 max-w-6xl mx-auto"
+      id="contact"
+      className="py-20 lg:py-28 px-6 lg:px-12 xl:px-20 max-w-6xl mx-auto scroll-mt-24"
       aria-labelledby="contact-heading"
     >
       <ScrollReveal>
@@ -81,12 +82,13 @@ export function Contact() {
             </div>
 
             <a
-              href="/CV_Navneet_Sharma.pdf"
-              download="CV_Navneet_Sharma.pdf"
+              href="/Navneet_Sharma_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 mt-8 rounded-lg bg-accent text-white px-5 py-2.5 text-small font-medium hover:bg-accent-muted transition-colors"
             >
               <Send size={14} />
-              Download Resume
+              View Resume
             </a>
           </div>
         </ScrollReveal>

@@ -10,7 +10,8 @@ export function Experience() {
 
   return (
     <section
-      className="py-20 lg:py-28 px-6 lg:px-12 xl:px-20 max-w-6xl mx-auto"
+      id="experience"
+      className="py-20 lg:py-28 px-6 lg:px-12 xl:px-20 max-w-6xl mx-auto scroll-mt-24"
       aria-labelledby="experience-heading"
     >
       <ScrollReveal>

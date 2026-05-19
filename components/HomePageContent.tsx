@@ -1,34 +1,15 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import { Hero } from '@/components/Hero';
 import { About } from '@/components/About';
 import { Skills } from '@/components/Skills';
+import { Experience } from '@/components/Experience';
+import { Projects } from '@/components/Projects';
+import { Certifications } from '@/components/Certifications';
+import { Contact } from '@/components/Contact';
 import { PageEntryFade } from '@/components/PageEntryFade';
-import { LazySection } from '@/components/LazySection';
-import { SectionPlaceholder } from '@/components/SectionPlaceholder';
 
 const SectionDivider = () => <hr className="max-w-6xl mx-auto border-t border-border/40" />;
-
-const DynamicExperience = dynamic(
-  () => import('@/components/Experience').then((m) => ({ default: m.Experience })),
-  { ssr: false }
-);
-
-const DynamicProjects = dynamic(
-  () => import('@/components/Projects').then((m) => ({ default: m.Projects })),
-  { ssr: false }
-);
-
-const DynamicCertifications = dynamic(
-  () => import('@/components/Certifications').then((m) => ({ default: m.Certifications })),
-  { ssr: false }
-);
-
-const DynamicContact = dynamic(
-  () => import('@/components/Contact').then((m) => ({ default: m.Contact })),
-  { ssr: false }
-);
 
 export function HomePageContent() {
   return (
@@ -39,13 +20,13 @@ export function HomePageContent() {
       <SectionDivider />
       <Skills />
       <SectionDivider />
-      <LazySection Component={DynamicExperience} placeholder={<SectionPlaceholder />} staggerDelay={0} sectionId="experience" />
+      <Experience />
       <SectionDivider />
-      <LazySection Component={DynamicProjects} placeholder={<SectionPlaceholder />} staggerDelay={0.05} sectionId="projects" />
+      <Projects />
       <SectionDivider />
-      <LazySection Component={DynamicCertifications} placeholder={<SectionPlaceholder />} staggerDelay={0.1} sectionId="certifications" />
+      <Certifications />
       <SectionDivider />
-      <LazySection Component={DynamicContact} placeholder={<SectionPlaceholder />} staggerDelay={0.15} sectionId="contact" />
+      <Contact />
     </PageEntryFade>
   );
 }
